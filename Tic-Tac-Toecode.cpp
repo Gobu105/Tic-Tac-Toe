@@ -3,7 +3,7 @@
 using namespace std;
 
 void board();
-void change(int user);
+void change();
 void playercall();
 void win();
 
@@ -14,7 +14,7 @@ int temp=0;
 int check;
 int count=0;
 
-void main()
+int main()
 {
 	cout<<"Tic-Tak-tak Game.."<<endl;
 	cout<<"Player 1 = 'X' "<<endl;
@@ -22,6 +22,7 @@ void main()
 	board();
 	playercall();
 	getch();
+	return 0;
 }
 
 void board()
@@ -98,14 +99,14 @@ void win()
 	}
 }
 
-void change(int user)
+void change()
 {
-	if((a[user]=='X')||(a[user]=='O'))
+	if((a[user]=='X') || (a[user]=='O'))
 	{
 		cout<<"Invalid move"<<endl;
 		check=1;
 	}
-	if((user>9)||(user<1))
+	else if((user>9)||(user<1))
 	{
 		cout<<"Invalid move"<<endl;
 		check=1;
@@ -139,7 +140,7 @@ void playercall()
 		if(check==1)
 		{
 			i--;
-			check--;
+			check -= 1;
 			count -= 1;
 			if(temp==0)
 			{
@@ -156,15 +157,15 @@ void playercall()
 			cin>>user;
 			temp=1;
 			count += 1;
-			change(user);
+			change();
 		}
-		else
+		if(temp==1)
 		{
 			cout<<"Player 2 ::";
 			cin>>user;
 			temp=0;
 			count += 1;
-			change(user);
+			change();
 		}
 		if(flag==1)
 		{
